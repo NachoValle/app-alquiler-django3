@@ -1,0 +1,46 @@
+{% extends "core/base.html" %}  
+{% load static %}
+ {% block head %}
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href='{% static "core/css/bootstrap.css" %}' />
+  <link rel="stylesheet" href='{% static "core/css/animate.css" %}'/>
+  <link rel="stylesheet" href='{% static "core/css/font-awesome.min.css" %}' />
+  <link rel="stylesheet" href='{% static "core/css/font.css" %}' />
+  <link rel="stylesheet" href='{% static "core/css/app.css" %}'/>
+  {% endblock %}
+{% block content %}
+<style>.errorlist{color:red;}</style>
+  <section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
+    <div class="container aside-xxl">
+      <a class="navbar-brand block" href="{% url 'home' %}">Vuelacar</a>
+      <section class="panel panel-info dker bg-white m-t-lg" style=" width:550px">
+        <header class=" bg-dark lter text-center">
+          <strong>Crear Usuario</strong>
+        </header>
+        <form action="" method="post" class="panel-body wrapper-lg">{% csrf_token %}
+          <h3 class="mb-4">Formulario</h3>
+          {{ form.as_p}}
+          <p><input type="submit" class="btn btn-dark lter btn-block" value="Crear"></p>
+        </form>
+      </section>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="text-center padder">
+      <p>
+        <small>Aplicación por Nacho Valle<br>&copy; 2020</small>
+      </p>
+    </div>
+  </footer>
+  <!-- / footer -->
+  <script src='{% static "core/js/jquery.min.js" %}'></script>
+  <!-- Bootstrap -->
+  <script src='{% static "core/js/bootstrap.js" %}'></script>
+  <!-- App -->
+  <script src='{% static "core/js/app.js" %}'></script>
+  <script src='{% static "core/js/app.plugin.js" %}'></script>
+  <script src='{% static "core/js/slimscroll/jquery.slimscroll.min.js" %}'></script>
+  
+{% endblock %}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" class="bg-dark">
+<head>
+  <meta charset="utf-8" />
+  <title>Vuelacar| Login</title>
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href='{% static "core/css/bootstrap.css" %}' />
+  <link rel="stylesheet" href='{% static "core/css/animate.css" %}'/>
+  <link rel="stylesheet" href='{% static "core/css/font-awesome.min.css" %}' />
+  <link rel="stylesheet" href='{% static "core/css/font.css" %}' />
+  <link rel="stylesheet" href='{% static "core/css/app.css" %}'/>
+  <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+<body>
+<style>.errorlist{color:red;}</style>
+  <section id="content" class="m-t-lg wrapper-md animated fadeInUp">    
+    <div class="container aside-xxl">
+      <a class="navbar-brand block" href="{% url 'home' %}">Vuelacar</a>
+      <section class="panel panel-default bg-white m-t-lg">
+        <header class="panel-heading text-center">
+          <strong>Acceso</strong>
+        </header>
+        <form action="" method="post" class="panel-body wrapper-lg">{% csrf_token %}
+          <h3 class="mb-4">Iniciar sesión</h3>
+          {% if form.non_field_errors %}
+            <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
+          {% endif %}
+          <p>
+            <input type="text" name="username" autofocus maxlength="254" required
+              id="id_username" class="form-control" placeholder="Nombre de usuario"/>
+          </p>
+          <p>
+            <input type="password" name="password" required
+              id="id_password" class="form-control" placeholder="Contraseña"/>
+          </p>
+          <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
+        </form>
+      </section>
+    </div>
+  </section>
+  <!-- footer -->
+  <footer id="footer">
+    <div class="text-center padder">
+      <p>
+        <small>Aplicación por Nacho Valle<br>&copy; 2020</small>
+      </p>
+    </div>
+  </footer>
+  <!-- / footer -->
+  <script src='{% static "core/js/jquery.min.js" %}'></script>
+  <!-- Bootstrap -->
+  <script src='{% static "core/js/bootstrap.js" %}'></script>
+  <!-- App -->
+  <script src='{% static "core/js/app.js" %}'></script>
+  <script src='{% static "core/js/app.plugin.js" %}'></script>
+  <script src='{% static "core/js/slimscroll/jquery.slimscroll.min.js" %}'></script>
+  
+</body>
+</html>

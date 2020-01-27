@@ -1,0 +1,111 @@
+{% extends "core/base.html" %}  
+{% load static %}
+ {% block head %}
+ 
+ {% endblock %}
+{%  block titulo_pagina %}Lista Usuarios{% endblock %}
+
+{% block content %}
+{% if messages %}
+<section>
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h5><i class="fas fa-check-circle"></i><strong>INFORMACION:</strong></h5><h5>{{ message }}.</h5>
+</div>
+        
+    
+    {% endfor %}
+</ul>
+</section>
+{% endif %}
+<!--{% if itv_ok %}
+<div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h5><i class="fas fa-check-circle"></i><strong>INFORMACION:</strong></h5>{{itv_ok}}</a>.
+</div>
+{% endif %}-->
+<section class="panel panel-info dker">
+           <header class="panel-heading bg-info dker" style="color:white">
+                  <h5>Usuarios</h5>
+                </header>
+                
+                <div class="table-responsive">
+                  <table class="table table-striped b-t b-light" id="tabla_datos">
+                    <thead>
+                      <tr>
+                        <th ><i class="fas fa-user" style="color:black" aria-hidden="true"></i></th>
+                         
+                        
+                                         
+                        <th>Madrid</th>                         
+                        <th>Valladolid</th>                         
+                        <th>Salamanca</th>
+                        <th>Las Palmas</th>
+                        <th >Mallorca</th>
+                        <th >Zamora</th>
+                        <th >Usuarios</th>
+                        <th >Crear Vehiculo</th>
+                        <th >Editar</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for usuario in usuarios %}
+                      {% if not usuario.is_superuser %}
+                      <tr>
+                        <td>{{usuario.username}}</td>
+                                                
+                        <td>{% if usuario.profile.madrid %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td>{% if usuario.profile.valladolid %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td>{% if usuario.profile.salamanca %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td>{% if usuario.profile.las_palmas %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td>{% if usuario.profile.mallorca %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td>{% if usuario.profile.zamora %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td>{% if usuario.profile.p_user %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        
+                          <td>{% if usuario.profile.p_vehiculos %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}</td>
+                        <td><a href="{% url 'actualizar_permisos' usuario.username %}"> <button class="btn btn-sm btn-warning btn-rounded" data-toggle="tooltip" data-placement="left" title="" data-original-title="Editar Usuario"><i class="fas fa-user-check" ></i></button> </a></td>
+                      </tr>
+                      {% endif %}
+                      {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+                
+              </section>
+
+{% endblock %}

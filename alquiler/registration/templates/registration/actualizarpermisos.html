@@ -1,0 +1,217 @@
+{% extends "core/base.html" %}  
+{% load static %}
+ {% block head %}
+ <style>
+   .contenedor{
+     height:50px;
+     
+   }
+
+		#matricula {
+
+			position: relative;
+    display:inline-block;
+    text-align: center;
+    width:150px;
+    
+
+		}
+
+		#placa
+
+		{
+      
+
+		position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+
+		}
+
+	</style>
+ 
+ {% endblock %}
+{%  block titulo_pagina %}Actualizar Permisos Empleado{% endblock %}
+
+{% block content %}
+<div class="col-lg-10" style='min-width:450px' >
+                  
+                <section class="panel wrapper panel-info">
+                      
+                        
+                          
+                             
+                                
+                                    <div  style="color:black" >
+        
+                                           <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+                                            <input type="email" value="{{profile.user.email}}" class="form-control" readonly>
+                                                 <br>
+                                                 <section class="clearfix text-center m-t" >
+                         
+                         
+                         
+                      <section class="panel panel-info" >
+                        <header class="panel-heading bg-info dker lt no-border">
+                          <div class=" clearfix">
+                            <a href="#" class="pull-left thumb avatar b-3x m-r">
+                             {% if profile.avatar_user %}
+                              <img src="{{profile.avatar_user.url}}" class="img-circle">
+                               {% else %}
+                              <img src='{% static "core/images/no-avatar.jpg" %}' class="img-circle">
+                           {% endif %}
+
+                            </a>
+                            <div class="clear">
+                              <div class="h3 m-t-xs m-b-xs text-white">
+                               {{ profile.user}}
+                                <i class="fa fa-circle text-white pull-right text-xs m-t-sm"></i>
+                              </div>
+                              <small class="text-muted">Permiso de Usuario</small>
+                            </div>                
+                          </div>
+                        </header>
+                        <div class="list-group no-radius alt">
+                          <p class="list-group-item" >
+                          {% if profile.madrid %}
+                            <span class="badge bg-success">OK  {{form.madrid}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.madrid}}</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Madrid
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.valladolid %}
+                            <span class="badge bg-success">OK  {{form.valladolid}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.valladolid}}</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Valladolid
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.salamanca %}
+                            <span class="badge bg-success">OK  {{form.salamanca}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.salamanca}}</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Salamanca
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.las_palmas %}
+                            <span class="badge bg-success">OK  {{form.las_palmas}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.las_palmas}}</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Las Palmas de Gran Canaria
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.mallorca %}
+                            <span class="badge bg-success">OK  {{form.mallorca}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.mallorca}}</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Palma de Mallorca
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.zamora %}
+                            <span class="badge bg-success">OK  {{form.zamora}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.zamora}}</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Zamora
+                            
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.todas %}
+                            <span class="badge bg-success">OK  {{form.todas}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.todas}}</span>
+                          {% endif %}
+                            <i class="fas fa-globe-europe icon-muted"></i> 
+                            Todas las ciudades
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.p_user %}
+                            <span class="badge bg-success">OK  {{form.p_user}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.p_user}}</span>
+                          {% endif %}
+                            <i class="fas fa-users icon-muted"></i> 
+                            Permisos para Usuarios
+                          </p>
+                          <p class="list-group-item" >
+                          {% if profile.p_vehiculos %}
+                            <span class="badge bg-success">OK  {{form.p_vehiculos}}</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO  {{form.p_vehiculos}}</span>
+                          {% endif %}
+                            <i class="fas fa-car icon-muted"></i> 
+                            Crear Vehiculos
+                          </p>
+
+
+
+
+
+                        </div>
+                      </section>
+                 
+                   
+
+
+
+
+                          
+                    
+                          
+
+                         
+                         
+                         
+                          </section>    
+                                            
+                                                <br>
+                                                
+                                                <div class="text center">
+                                            <input type="submit"  class="btn bg-info dker  btn-inline" value="Actulizar Permisos Usuario" />
+                                           
+                                             </div>
+                                             </form>
+                                    </div>
+                                  
+                          </section>    
+                          
+
+           
+                           
+                            
+ 
+ 
+ 
+ </div><script>
+
+$(document).ready(function(){
+	$('.checkbox').click(function(){
+		return false;         
+	}); 
+}); 
+ </script>                         
+                    
+                    
+           
+                    
+
+               
+
+
+
+                 
+{% endblock %}

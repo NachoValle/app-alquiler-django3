@@ -1,0 +1,157 @@
+{% extends "core/base.html" %}  
+{% load static %}
+ {% block head %}
+ 	<style>
+   .contenedor{
+     height:50px;
+     
+   }
+
+		#matricula {
+
+			position: relative;
+    display:inline-block;
+    text-align: center;
+    width:150px;
+    
+
+		}
+
+		#placa
+
+		{
+      
+
+		position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+
+		}
+
+	</style>
+ {% endblock %}
+{%  block titulo_pagina %}Detalle Vehiculo{% endblock %}
+
+{% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <h5><i class="fas fa-check-circle"></i><strong>INFORMACION:</strong></h5>{{ message }}</a>.
+</div>
+        
+    
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="col-lg-12">
+                  <section class="panel panel-default">
+                    <div class="panel-body">
+                    <a href="{% url 'vehiculo:actualizar' vehiculo.id %}"> <button class="btn btn-sm btn-warning btn-rounded" data-toggle="tooltip" data-placement="right" title="" data-original-title="Editar Vehículo"><i class="fas fa-pencil-alt" ></i></button> </a> 
+                      <div class="clearfix text-center m-t">
+                        <div class="inline" >
+                          <div class="easypiechart easyPieChart" data-percent="100" data-line-width="6" data-bar-color="#192965" data-track-color="#f5f5f5" data-scale-color="false" data-size="225" data-line-cap="butt" data-animate="1000" style="width: 200px; height: 200px; line-height: 200px;">
+                            <div class="thumb-lg" style='width:200px'>
+                           
+                              <img onerror="this.src='{% static "core/images/logo.png" %}' "; src={{vehiculo.image.url}} class="img-circle">
+                           
+                            <div class="contenedor">
+                                  <div id="matricula">
+                                    <img src='{% static "core/images/matricula.png" %}' ><div   id="placa"><h3 style="color:black;font-family:Impact">{{vehiculo.placa}}</h3></div>
+                                  </div>    
+                              </div>                       
+                          <small class="h3" style="color:#18171c;font-family:Agency FB" ><strong>{{vehiculo.marca}} {{vehiculo.modelo}}</strong></small>
+                                              
+                        </div>                      
+                      </div>
+                    </div>
+                    <div style= "padding-top: 10px;" >
+                    <footer class="panel-footer text-center" style="background-color:#192965">
+                      <div class="row pull-out">
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                            <small class="text-muted">Odometro</small>
+                            <span class="m-b-xs h5 block text-white">{{vehiculo.odo}}</span>
+                          </div>
+                        </div>
+                        <div class="col-xs-4 dk" style="background-color:#4a69bb">
+                          <div class="padder-v">
+                            <small class="text-muted" >Ciudad</small>
+                            <span class="m-b-xs h5 block text-white">{{vehiculo.ciudad}}</span>
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                          {% if vehiculo.itv_pasada == 'style= color:green' %}                            
+                            <small style= 'color:green'><i class="fas fa-check-square" ></i>    I.T.V.</small>
+
+                          {% elif vehiculo.itv_pasada == 'style= color:orange' %}
+                            <small  style= 'color:orange'><i class="fas fa-exclamation-triangle"></i>    I.T.V.</small>
+                          {% else %}
+                            <small  style= 'color:red'><i class="fas fa-exclamation-triangle"></i>    I.T.V.</small>
+
+                          {% endif %}
+                            <span class="m-b-xs h5 block text-white">{{vehiculo.itv}}</span>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      <div class="row pull-out">
+                        <div class="col-xs-4 dk" style="background-color:#4a69bb">
+                          <div class="padder-v">
+                            <small class="text-muted">Combustible</small>
+                            {% if vehiculo.combustible == 'DSL' %}
+                            <span class="m-b-xs h5 block text-white">Diesel</span>
+                            {% elif vehiculo.combustible == 'GAS' %}
+                            <span class="m-b-xs h5 block text-white">Gasolina</span>
+                            {% elif vehiculo.combustible == 'HIB' %}
+                            <span class="m-b-xs h5 block text-white">Hibrido</span>
+                            {% elif vehiculo.combustible == 'GPL' %}
+                            <span class="m-b-xs h5 block text-white">GLP</span>
+
+                            {% else %}
+                            <span class="m-b-xs h5 block text-white">Gasolina</span>
+
+
+                            {% endif %}
+                          </div>
+                        </div>
+                        <div class="col-xs-4">
+                          <div class="padder-v">
+                          {% if vehiculo.tipo == 'TU' %}
+                            <i class="fas fa-car"  aria-hidden="true"></i>
+                            <span class="m-b-xs h5 block text-white">Turismo</span>
+                             {% else %}
+                            <small class="text-muted"><i class="fa fa-truck"  aria-hidden="true"></i></small>
+                            <span class="m-b-xs h5 block text-white">Furgon/Carga</span>
+
+
+                            {% endif %}
+
+                          </div>
+                        </div>
+                        <div class="col-xs-4 dk" style="background-color:#4a69bb">
+                          <div class="padder-v">
+                            {% if vehiculo.activo == True %}
+                            <i class="fas fa-check-square" style= 'color:green'></i>
+                            <span class="m-b-xs h5 block text-white">Activado</span>
+                             {% else %}
+                             <i class="fas fa-times-circle" style= 'color:Red'></i>
+                            <span class="m-b-xs h5 block text-white">Descativado</span>
+
+
+                            {% endif %}
+                          </div>
+                          
+                        </div>
+                      </div>
+                    </footer>
+                    </div>
+                  
+                  </section>
+                </div>
+
+{% endblock %}

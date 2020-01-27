@@ -1,0 +1,18 @@
+{% if request.user.profile.todas %}
+ <div class="row wrapper">
+                 <div class="col-sm-5 m-b-xs">
+                    <form name="link"><select name="menu">
+<option value="/vehiculo/">Todos</option>
+<option value="/vehiculo/Madrid/">Madrid</option>
+<option value="/vehiculo/Salamanca/">Salamanca</option>
+<option value="/vehiculo/Valladolid/">Valladolid</option>
+<option value="/vehiculo/LasPalmas/">Las Palmas</option>
+<option value="/vehiculo/Mallorca/">Mallorca</option>
+<option value="/vehiculo/Zamora/">Zamora</option>
+
+</select>  <input onclick="location=document.link.menu.options[document.link.menu.selectedIndex].value;" type="button" value="VER!" /><span style="line-height: 1.3em;"> </span></form>                
+                  </div>
+                  
+                  
+                </div>
+{% endif %}

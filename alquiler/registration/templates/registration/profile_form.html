@@ -1,0 +1,244 @@
+{% extends "core/base.html" %}  
+{% load static %}
+ {% block head %}
+ <style>
+   .contenedor{
+     height:50px;
+     
+   }
+
+		#matricula {
+
+			position: relative;
+    display:inline-block;
+    text-align: center;
+    width:150px;
+    
+
+		}
+
+		#placa
+
+		{
+      
+
+		position: absolute;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+
+		}
+
+	</style>
+ 
+ {% endblock %}
+{%  block titulo_pagina %}Actualizar Perfil{% endblock %}
+
+{% block content %}
+<div class="col-lg-10" style='min-width:450px' >
+                  <section class="panel panel-info" >
+                    <div class="panel-body">
+                      <div class="clearfix text-center m-t">
+                        <div class="inline" >
+                          <div class="easypiechart easyPieChart" data-percent="100" data-line-width="6" data-bar-color="#192965" data-track-color="#f5f5f5" data-scale-color="false" data-size="200" data-line-cap="butt" data-animate="1000" style="width: 180px; height: 180px; line-height: 180px;">
+                            <div class="thumb-lg" style='width:200px'>
+                           {% if request.user.profile.avatar_user %}
+                              <img  src={{request.user.profile.avatar_user.url}} class="img-circle" style="width: 180px; height: 180px; line-height: 180px;">
+                           {% else %}
+                              <img  src='{% static "core/images/no-avatar.jpg" %}' class="img-circle" style="width: 180px; height: 180px; line-height: 180px;">
+                           {% endif %}
+                           
+                            <div class="contenedor">
+                                  <div id="matricula">
+                                    <img src='{% static "core/images/matricula.png" %}' ><div   id="placa"><h3 style="color:black;font-family:Impact">{{user.username}}</h3></div>
+                                  </div>    
+                              </div>                       
+                          
+                                              
+                        </div>                      
+                      </div>
+                    </div>
+                    <div style= "padding-top: 10px;" >
+                    <section class="">
+                      
+                        
+                          
+                             
+                                
+                                    <div  style="" >
+        
+                                           <form enctype="multipart/form-data" action="" method="post">{% csrf_token %}
+                                            
+                                                 {{ form.as_p}}
+                                            
+                                                <br>
+                                                <input type="email" value="{{request.user.email}}" class="form-control" readonly>
+                                                 <p class="mt-3"> Para editar el email pincha <a href="{% url 'profile_email' %}" style='color:blue'>aqui</a>.
+                                                 <br>
+                                                 <p class="mt-3"> Para editar la contraseña pincha <a href="{% url 'password_change' %}" style='color:blue'>aqui</a>.
+
+                                                <div class="text center">
+                                            <input type="submit"  class="btn bg-info dker btn-inline" value="Actulizar Usuario" />
+                                           
+                                             </div>
+                                             </form>
+                                    </div>
+                                  
+                          </section>    
+                    </section>
+     
+                
+                          <section class="clearfix text-center m-t" >
+                         
+                         
+                         
+                      <section class="panel panel-info" >
+                        <header class="panel-heading bg-info dker lt no-border">
+                          <div class=" clearfix">
+                            <a href="#" class="pull-left thumb avatar b-3x m-r">
+                             {% if request.user.profile.avatar_user %}
+                              <img src="{{request.user.profile.avatar_user.url}}" class="img-circle">
+                               {% else %}
+                              <img src='{% static "core/images/no-avatar.jpg" %}' class="img-circle">
+                           {% endif %}
+
+                            </a>
+                            <div class="clear">
+                              <div class="h3 m-t-xs m-b-xs text-white">
+                                Permisos
+                                <i class="fa fa-circle text-white pull-right text-xs m-t-sm"></i>
+                              </div>
+                              <small class="text-muted">{{user.username}}</small>
+                            </div>                
+                          </div>
+                        </header>
+                        <div class="list-group no-radius alt">
+                          <p class="list-group-item" >
+                          {% if request.user.profile.madrid %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Madrid
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.valladolid %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Valladolid
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.salamanca %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Salamanca
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.las_palmas %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Las Palmas de Gran Canaria
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.mallorca %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Palma de Mallorca
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.zamora %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-city icon-muted"></i> 
+                            Zamora
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.todas %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-globe-europe icon-muted"></i> 
+                            Todas las ciudades
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.p_user %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-users icon-muted"></i> 
+                            Permisos para Usuarios
+                          </p>
+                          <p class="list-group-item" >
+                          {% if request.user.profile.p_vehiculos %}
+                            <span class="badge bg-success">OK</span>
+                          {% else %}
+                            <span class="badge bg-danger dker">NO</span>
+                          {% endif %}
+                            <i class="fas fa-car icon-muted"></i> 
+                            Crear Vehiculos
+                          </p>
+
+
+
+
+
+                        </div>
+                      </section>
+                 
+                   
+
+
+
+
+                          
+                    
+                          
+
+                         
+                         
+                         
+                          </section>    
+
+           
+                           
+                            
+ 
+ 
+ 
+ </div><script>
+
+$(document).ready(function(){
+	$('.checkbox').click(function(){
+		return false;         
+	}); 
+}); 
+ </script>                         
+                    
+                    
+           
+                    
+
+               
+
+
+
+                 
+{% endblock %}
